@@ -18,58 +18,35 @@ def bot_message(message):
 
     if message.chat.type == 'private':
         if message.text == 'Знакомство с Python':
-            content.start_python(message)
+            content.menu_python(message)
 
         elif message.text == '1. Введение в Python':
-            markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            item_back = types.KeyboardButton('Назад')
-            markup.add(item_back)
-
-            content.python_one(message)
-
-            if message.text == 'Назад':
-                content.python_two(message)
+            content.get_content(message, s_content.pyth_lec_one,
+                                s_content.pyth_sem_one, s_content.pyth_sem_two, pdf=s_content.pyth_pdf_one)
 
         elif message.text == '2. Данные, функции':
-            markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            item_back = types.KeyboardButton('Назад')
-            markup.add(item_back)
-
-            content.python_two(message)
+            content.get_content(message, s_content.pyth_lec_two,
+                                s_content.pyth_sem_three, pdf=s_content.pyth_pdf_two)
 
         elif message.text == ('Гибкие методологии'):
-            markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            item_back = types.KeyboardButton('Назад')
-            markup.add(item_back)
-
             content.menu_agile(message)
 
         elif message.text == 'Введение':
-            markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            item_back = types.KeyboardButton('Назад')
-            markup.add(item_back)
-
-            content.start_agile(message)
+            content.get_content(message, s_content.agl_lec_one,
+                                s_content.agl_sem_one, pdf=s_content.agl_pdf_one)
 
         elif message.text == 'Agile':
-            markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            item_back = types.KeyboardButton('Назад')
-            markup.add(item_back)
-            content.agile(message)
+            content.get_content(message, s_content.agl_lec_two,
+                                s_content.agl_sem_two, pdf=s_content.agl_pdf_two)
 
         elif message.text == ('Scrum'):
-            markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            item_back = types.KeyboardButton('Назад')
-            markup.add(item_back)
-            content.scrum(message)
+            content.get_content(message, s_content.agl_lec_scrm,
+                                s_content.agl_sem_scrm, pdf=s_content.agl_pdf_scrm)
 
         elif message.text == ('Lean'):
-            markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            item_back = types.KeyboardButton('Назад')
-            markup.add(item_back)
-            markup.add(item_back)
-            content.lean(message)
-        
+            content.get_content(
+                message, s_content.agl_lec_lean, pdf=s_content.agl_pdf_lean)
+
         elif message.text == 'Назад':
             content.back(message)
 
